@@ -26,3 +26,4 @@ Go to: http://getpocket.com/developer/apps/ and create a web app to get your con
 2. Find values of the cookies nette-browser and PHPSESSID and put them in config.php
 3. Configure URL of the processing script process.php in config.php
 4. Go to http://www.example.com/api.php and wait until it processed the archive
+
