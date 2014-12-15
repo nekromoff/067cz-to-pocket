@@ -4,7 +4,7 @@
 
 * Quick and dirty PHP scraper using logged-in user credentials / cookies.
 * Uses cookies from user's browser (manually copied) to submit articles to Pocket.
-* Uses Pocket OAuth https://github.com/jshawl/pocket-oauth-php
+* Uses Pocket OAuth: https://github.com/jshawl/pocket-oauth-php
 * Uses Simple HTML DOM: http://sourceforge.net/projects/simplehtmldom/
 
 Disclaimer
@@ -26,4 +26,4 @@ Go to: http://getpocket.com/developer/apps/ and create a web app to get your con
 1. Go to https://067.cz and log in.
 2. Find values of the cookies nette-browser and PHPSESSID and put them in config.php
 3. Configure URL of the processing script process.php in config.php
-4. Go to http://www.example.com/api.php and wait until it processed the archive
+4. Go to http://www.example.com/api.php and wait until it processes the archive
