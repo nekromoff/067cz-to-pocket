@@ -14,14 +14,14 @@ Usage
 ---------------
 Go to: http://getpocket.com/developer/apps/ and create a web app to get your consumer key. "Add" permission is required, others optional.
 
-== Pocket Authentication
+=== Pocket Authentication
 1. Edit the variables in config.php.example and rename to config.php
 2. Visit http://www.example.com/connect.php in your browser
 3. Authenticate!
 4. You'll be redirected to callback.php
 5. Add your access token to config.php
 
-== 067.cz Authentication
+=== 067.cz Authentication
 1. Go to https://067.cz and log in.
 2. Find values of the cookies nette-browser and PHPSESSID and put them in config.php
 3. Configure URL of the processing script process.php in config.php
