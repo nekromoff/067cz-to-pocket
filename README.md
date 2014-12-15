@@ -5,6 +5,7 @@
 * Quick and dirty PHP scraper using logged-in user credentials / cookies.
 * Uses cookies from user's browser (manually copied) to submit articles to Pocket.
 * Uses Pocket OAuth https://github.com/jshawl/pocket-oauth-php
+* Uses Simple HTML DOM: http://sourceforge.net/projects/simplehtmldom/
 
 Disclaimer
 ---------------
