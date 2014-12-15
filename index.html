@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>067.cz to Pocket</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <style>
+    #script-output {display:none;}
+    #saving-backdrop {display:none;background-color:black;opacity:0.8;bottom:0;left:0;position:fixed;right:0;top:0;z-index:1040;display:none;}
+    #saving-backdrop img {display:block;width:128px;margin:200pt auto 0 auto;}
+    #saving-backdrop p {width:200pt;margin:10pt auto;font-size:20pt;color:#bbb;text-align:center;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="page-header">
+      <h1>067.cz to Pocket</h1>
+    </div>
+    <div class="alert alert-warning" role="alert">
+      <p>Use this tool to import the 067 Magazine articles to your Pocket app.</p>
+    </div>
+    <p>
+      <a class="btn btn-success" href="/api.php?target=last_issue">Import latest</a> Imports just the articles from the last issue.
+    </p>
+    <p>
+      <a class="btn btn-danger" href="/api.php">Import all</a> Imports ALL articles from the whole archive - be careful!
+    </p>
+    <pre id="script-output"></pre>
+  </div>
+
+  <div id="saving-backdrop">
+    <img src="transparent-loading-spinner.gif" alt="spinner" />
+    <p>Importing articles, please wait...</p>
+  </div>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+  <script type="text/javascript">
+    // run the import scripts remotely
+    $('a.btn').on('click',function(evt){
+      $('a.btn').attr('disabled',true);
+      $('#saving-backdrop').show();
+      var url = $(this).attr('href');
+      $.get(url, function(data){
+        $('#script-output').append(data).show();
+        $('a.btn').removeAttr('disabled');
+        $('#saving-backdrop').hide();
+      });
+      return false;
+    });
+    // Hide the saving spinner on ESC key press
+    $(document).keyup(function(evt){
+      var $backdrop = $('#saving-backdrop');
+      if (evt.which==27 && $backdrop.is(':visible')) { // catch the ESC key
+        $backdrop.hide();
+      }
+    });
+  </script>
+</body>
+</html>
