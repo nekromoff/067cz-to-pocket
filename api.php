@@ -37,29 +37,34 @@ print_r($content);
 */
 
 $html=file_get_html("https://067.cz/archiv.html");
-foreach($html->find('a[href*=archiv\/]') as $link)
-   {
-   $urls[]=$serverurl."?url=".urlencode($link->href);
-   }
 
-foreach ($urls as $articleurl)
-   {
+$target = $_GET['target'];
+if ($target && $target=='last_issue') {
+  $links = $html->find('div.listAuthor',0)->find('a[href*=archiv\/]');
+}
+else {
+  $links = $html->find('a[href*=archiv\/]');
+}
 
+foreach ($links as $link) {
+  $articleurl = $serverurl."?url=".urlencode($link->href);
 
-   $url = 'https://getpocket.com/v3/add';
-   $data = array(
-         'consumer_key' => $consumer_key,
-         'access_token' => $access_token,
-         'url' => $articleurl
-   );
-   $options = array(
-         'http' => array(
-                  'method'  => 'POST',
-                  'content' => http_build_query($data)
-         )
-   );
-   $context  = stream_context_create($options);
-   $result = file_get_contents($url, false, $context);
-   echo 'added ',$articleurl,'<br />'; flush(); ob_flush();
-   }
+  $url = 'https://getpocket.com/v3/add';
+  $data = array(
+    'consumer_key' => $consumer_key,
+    'access_token' => $access_token,
+    'url' => $articleurl
+  );
+  $options = array(
+    'http' => array(
+      'method'  => 'POST',
+      'content' => http_build_query($data)
+    )
+  );
+  $context  = stream_context_create($options);
+  $result = file_get_contents($url, false, $context);
+
+  echo 'added ',$articleurl,'<br />'; flush(); ob_flush();
+}
+
 ?>
